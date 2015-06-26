@@ -1,0 +1,126 @@
+Jukselapp for Python, Phantomjs, Nodejs etc
+
+
+Sette opp et nytt Node-prosjekt:
+npm init
+- klikk deg igjennom for å lage nytt prosjekt
+npm install -g express; installerer på globalt nivå, ikke bare i app-katalogen hvor du har laget appen din.
+npm install --save nightmare   --save oppdaterer json-filen med dependencies
+
+
+
+Mocha is a test framework
+'Describe' blir overskriften på testen/e
+'it' blir unit-testen
+
+Før og etter alle eller en og en test:
+
+	beforeEach(function(){
+		console.log('Running before each test...');
+	});
+	
+	after(function(){
+		console.log('Running after all the tests...');
+	});
+
+du kan kjøre en test eller skippe en test ved å sette inn ved it'en:
+it.only(...) run only
+it.skip(...) run all except
+
+mocha indexSpec.js --reporter doc > out.html
+- pip'er rapport til html, som du kan åpne og se :-)
+legg disse i en mocha.opts fil og legg den i samme katalog som testene, så slipper man å skrive lange kommandoer, holder med bare mocha
+
+når du lager en test mappe og legger testene inn der, kan testene kjøres med kun mocha-kommando
+HUSK at du må legge til et ekstra punktum for å referere til filen som det testes mot:
+= require('./index'); = ett punktum, tester og filer ligger i samme katalog
+= require('../index'); = to punktum, tester ligger en katalog unna
+
+
+npm test
+Hvis du får describe is not defined; har du husket å kjøre mocha i stedet for node filnavn.js?
+
+Blanket test coverage, viktigst;
+Legg på dette på package.json filen:
+,
+  "config": {
+  "blanket": {
+	"pattern": ["index.js"],
+	"data-cover-never": "node_modules"
+  }
+  }
+PS: pattern er de filene som er inkludert i code coverage
+
+editer key scripts også:
+"test": "mocha && mocha test --require blanket --reporter html-cov > coverage.html"
+
+når du bare skal kjøre tester: mocha
+når du også skal ha med code coverage: npm test
+
+øke timeout på Mocha/npm test --timeout 5000 f eks, 2000 er default
+Og timeout kan legges inn i properties-filen, så man slipper å tenke mer på det
+
+callback og function/done har å gjøre med asynkrone kall i JavaScript!
+
+
+SinonJS for mocking etc etc
+Ta en kopi av hele folderen og rename den til sinon i stedet (bare for opplæringen sin del?)
+npm i sinon --save-dev
+npm i sinon-chai --save-dev
+
+
+NODE SERVER:
+du må sette opp en server selv, hvis du skal teste på kode (og ikke ekstern link!)
+lag en fil som heter server.js
+start server med kommandoen node server
+stopp server med kommandoen taskkill /IM node.exe /F
+
+
+CHROMEDRIVER:
+du må finne ut hvordan du legger denne i path i windows,
+men, for nå holder det å legge ut en chromedriver i samme mappe som du kjører
+node-kommandoen fra
+
+Chai is an expectation framework
+
+
+Node generelt:
+Hvis det ikke er en test, men et vanlig javascript så bruk:
+node filnavn (uten js-ending)
+node command prompt
+where node (hvor er det installert?)
+
+GITHUB
+Logg på og lag repository på github først
+Huk av for initialize readme
+Add licence
+Lag repository
+Kopier link til repositor
+gå lokalt på pc
+git clone <link-til-repository>
+når du er på master, så er det bare å sette i gang å programmere
+
+sjekke inn herfra:
+git status (det som ikke er sjekket inn er rødt...)
+git add --all
+git commit -a -m "kommentar"
+git push
+
+så skal lokalt repo og github være likt!
+
+Hva hvis du har programmert lokalt uten GIT først?
+
+
+
+
+Phantomjs
+CMD: C:\JavaScripts
+phantomjs joePhantom.js
+Er PhantomJS installert?
+CMD: phantomjs - du får en phantomjs-prompt!
+
+Kombinere Selenium og Phantomjs:
+
+
+Python shell/GUI
+test installasjon: import this
